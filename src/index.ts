@@ -38,9 +38,9 @@ const runCommand = (command: string) => execSync(command, {
 
 export async function tsAdd() {
   if(getConfig(':make-autocompletion-flags')) {
-    const [param] = process.argv.slice(3) as [string, string];
+    const [param] = process.argv.slice(3);
 
-    if(!param.startsWith('-')) {
+    if(!param?.startsWith('-')) {
       return;
     }
 
