@@ -9,6 +9,7 @@
     "types",
     "typings",
     "add-package",
+    "install-package",
     "package-with-types"
   ],
   "scripts": {
