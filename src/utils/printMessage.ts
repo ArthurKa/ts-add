@@ -259,24 +259,21 @@ export const printMessage: IPrintMessage = {
 
     const { name } = require(pathToPackageJson);
 
-    console.info(multilineTrimLeft`
+    console.info('\n' + multilineTrimLeft`
       ###-begin-${name}-completion-###
       # ${name} command completion script
       # Installation: ${name} --completion >> ~/.bashrc
       #
       if type complete &>/dev/null; then
         _ts_add_completion() {
-          local cur word_number
-          _get_comp_words_by_ref -n : cur
-          word_number=$(grep -o ":" <<< "$COMP_LINE" | wc -l)
+          local cur;
+          _get_comp_words_by_ref -n : cur;
 
           COMPREPLY=($(compgen -W '$($1 --:make-autocompletion-flags\\
-            \${COMP_WORDS[COMP_CWORD]} "\${COMP_LINE}")' -- "$cur"))
+            \${COMP_WORDS[COMP_CWORD]} "\${COMP_LINE}")' -- "$cur"));
         }
 
-        complete -F _ts_add_completion ${name}
-        complete -F _ts_add_completion tsa
-        complete -F _ts_add_completion tsi
+        complete -F _ts_add_completion ${name} tsa tsi;
       fi
       ###-end-${name}-completion-###
     `);
