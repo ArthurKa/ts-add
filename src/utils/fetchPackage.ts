@@ -7,6 +7,7 @@ interface IPackage {
   versions: Record<string, {
     types?: unknown;
     typings?: unknown;
+    files?: string[];
     deprecated?: unknown;
   }>;
   'dist-tags': {

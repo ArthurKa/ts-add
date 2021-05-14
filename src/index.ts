@@ -144,7 +144,12 @@ export async function tsAdd() {
     }
 
     const targetPackage = pkg.versions[targetVersion]!;
-    const hasExplicitTypes = Boolean(targetPackage.types || targetPackage.typings);
+    const hasExplicitTypes = Boolean(
+      false
+      || targetPackage.types
+      || targetPackage.typings
+      || targetPackage.files?.some(e => e.endsWith('.d.ts'))
+    );
 
     if(!getConfig('types-only')) {
       if(targetVersion === tags.latest) {
