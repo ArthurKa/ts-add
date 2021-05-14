@@ -1,0 +1,64 @@
+{
+  "name": "ts-add",
+  "version": "1.0.0",
+  "description": "Add packages with their corresponding types.",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "keywords": [
+    "install",
+    "types",
+    "typings",
+    "add-package",
+    "package-with-types"
+  ],
+  "scripts": {
+    "build:clean": "rm -rf build/*",
+    "ts": "tsc -w",
+    "ts-compile": "tsc --declaration",
+    "my-compile": "node ../compile.js",
+    "build": "lock-verify && npm run build:clean && npm run ts-compile && npm run my-compile",
+    "publish:prepare": "mkdir -p ./build/build && mv ./build/* ./build/build; cp ./package* README.md ./build",
+    "pu": "npm pu ./build",
+    "my-publish": "npm run publish:prepare && npm run pu"
+  },
+  "dependencies": {
+    "atob": "^2.1.2",
+    "btoa": "^1.2.1",
+    "chalk": "^4.1.1",
+    "command-line-usage": "^6.1.1",
+    "npm-package-arg": "^8.1.2",
+    "npm-registry-fetch": "^9.0.0",
+    "semver": "^7.3.5",
+    "yargs-parser": "^20.2.7"
+  },
+  "devDependencies": {
+    "@types/atob": "^2.1.2",
+    "@types/btoa": "^1.2.3",
+    "@types/command-line-usage": "^5.0.1",
+    "@types/node": "^14.14.43",
+    "@types/npm-package-arg": "^6.1.0",
+    "@types/npm-registry-fetch": "^8.0.0",
+    "@types/semver": "^7.3.4",
+    "@types/yargs-parser": "^20.2.0",
+    "lock-verify": "^2.2.1",
+    "typescript": "^4.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArthurKa/ts-add.git"
+  },
+  "author": {
+    "name": "ArthurKa",
+    "email": "arthur.katruk@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArthurKa/ts-add/issues"
+  },
+  "homepage": "https://github.com/ArthurKa/ts-add#readme",
+  "bin": {
+    "ts-add": "./build/cli/index.js",
+    "tsa": "./build/cli/index.js",
+    "tsi": "./build/cli/i.js"
+  }
+}
