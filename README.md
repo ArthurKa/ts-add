@@ -53,7 +53,7 @@ ts-add [options]... package[@version] [[options] [package[@version]]]...
 | -h, --help                        | boolean | Display this help and exit.
 
 ## Searching `@types` algorithm
-1. Look into `package.json` file of requested package. If there is `types` or `typings` field in it so package has explicit types. Job's done.
+1. Look into `package.json` file of requested package. If there is `types` or `typings` field or `files` array includes `.d.ts` ending string in it so package has explicit types. Job's done.
 2. If not — search for `@types` package. If there is `@types` package search for its corresponding version:
    - for latest requested package — latest `@types` package;
    - for any other version — take max satisfying version by `<major>.<minor>.x`, where `<major>` and `<minor>` parts are taken from requested package.\
