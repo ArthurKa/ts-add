@@ -4,7 +4,7 @@ import btoa from 'btoa';
 import atob from 'atob';
 import yargsParser, { Arguments, Options } from 'yargs-parser';
 import { printMessage } from './printMessage';
-import { ObjEntries, ObjKeys, ValuesOf } from './tsUtils';
+import { ObjEntries, ObjKeys, ValueOf } from './tsUtils';
 import { parseURL } from './parseURL';
 
 export let withFlagCredentials = false;
@@ -215,7 +215,7 @@ function parseCLIParams(): ParsedCLIParams {
 
 export const parsedCLIParams = parseCLIParams();
 
-export function getConfigValueByFlagOrSynonym(key: Flag | FlagSynonym): ValuesOf<typeof flagsWithDefaulValues> {
+export function getConfigValueByFlagOrSynonym(key: Flag | FlagSynonym): ValueOf<typeof flagsWithDefaulValues> {
   if(isFlag(key)) {
     return parsedCLIParams[key];
   }

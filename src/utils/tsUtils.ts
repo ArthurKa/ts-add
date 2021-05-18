@@ -14,4 +14,4 @@ export function ObjValues<T>(obj: T): (T[keyof T])[] {
   return Object.values(obj) as any;
 }
 
-export type ValuesOf<T> = T[keyof T];
+export type ValueOf<T> = T[keyof T];
