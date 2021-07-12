@@ -1,15 +1,24 @@
-import { getConfig, makeFlagWithPrefix } from './parsedCLIParams';
-import commandLineUsage, { OptionDefinition } from 'command-line-usage';
-import { flagsWithDefaulValues, flagAliases, Flag, FlagSynonym } from './parsedCLIParams';
-import { ObjEntries } from './tsUtils';
 import chalk from 'chalk';
+import commandLineUsage, { OptionDefinition } from 'command-line-usage';
+// WARN
+// eslint-disable-next-line import/no-cycle
+import {
+  getConfig,
+  makeFlagWithPrefix,
+  flagsWithDefaulValues,
+  flagAliases,
+  Flag,
+  FlagSynonym,
+} from './parsedCLIParams';
+
+import { ObjEntries } from './tsUtils';
 
 const pathToPackageJson = '../../package.json';
 
 function multilineTrimLeft(strings: TemplateStringsArray, ...params: unknown[]): string {
   const s = strings.map((e, i) => `${e}${i === params.length ? '' : params[i]}`).join('');
 
-  const whiteSpaceAmount = s.match(/\n?(\s*)\S/)?.[1]!.length;
+  const whiteSpaceAmount = s.match(/\n?(\s*)\S/)?.[1]?.length;
 
   let result = s.trim();
   if(whiteSpaceAmount) {
@@ -95,6 +104,7 @@ export const printMessage: IPrintMessage = {
       return;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-var-requires, import/no-dynamic-require, global-require
     const { version } = require(pathToPackageJson);
 
     console.info(`v${version}`);
@@ -105,6 +115,7 @@ export const printMessage: IPrintMessage = {
       return;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-var-requires, import/no-dynamic-require, global-require
     const { name, version } = require(pathToPackageJson);
 
     const optionDescriptions: Record<Flag, string> = {
@@ -148,6 +159,7 @@ export const printMessage: IPrintMessage = {
         } as OptionDefinition];
 
         while(aliases.length) {
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           const synonymName = aliases.shift()!;
           const alias = aliases.shift();
 
@@ -257,9 +269,10 @@ export const printMessage: IPrintMessage = {
       return;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-var-requires, import/no-dynamic-require, global-require
     const { name } = require(pathToPackageJson);
 
-    console.info('\n' + multilineTrimLeft`
+    console.info(`\n${multilineTrimLeft`
       ###-begin-${name}-completion-###
       # ${name} command completion script
       # Installation: ${name} --completion >> ~/.bashrc
@@ -276,7 +289,7 @@ export const printMessage: IPrintMessage = {
         complete -F _ts_add_completion ${name} tsa tsi;
       fi
       ###-end-${name}-completion-###
-    `);
+    `}`);
   },
 
   command(command) {

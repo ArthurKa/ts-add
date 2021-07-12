@@ -33,6 +33,7 @@
     "yargs-parser": "^20.2.7"
   },
   "devDependencies": {
+    "@arthurka/eslint": "^1.6.0",
     "@types/atob": "^2.1.2",
     "@types/btoa": "^1.2.3",
     "@types/command-line-usage": "^5.0.1",

@@ -49,7 +49,7 @@ export async function tsAdd() {
 
     // await tsAdd();
     // const flags = ObjKeys(flagStack)
-      // .map(key => [key, flagAliases[key]])
+    // .map(key => [key, flagAliases[key]])
     const flags = ObjEntries(flagAliases)
       .map(e => {
         const [flag, ...aliases] = e;
@@ -78,13 +78,16 @@ export async function tsAdd() {
     return;
   }
   if(getConfig('completion')) {
-    return void printMessage.completion();
+    printMessage.completion();
+    return;
   }
   if(getConfig('version')) {
-    return void printMessage.version();
+    printMessage.version();
+    return;
   }
   if(getConfig('help')) {
-    return void printMessage.help();
+    printMessage.help();
+    return;
   }
 
   const { _: packageNames } = parsedCLIParams;
@@ -116,7 +119,7 @@ export async function tsAdd() {
     let pkg;
     try {
       pkg = await fetchPackage(name);
-    } catch(e) {
+    } catch (e) {
       if(e.code === 'E401') {
         printMessage.unauthorized();
       } else {
@@ -143,12 +146,13 @@ export async function tsAdd() {
       process.exit(1);
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const targetPackage = pkg.versions[targetVersion]!;
     const hasExplicitTypes = Boolean(
       false
       || targetPackage.types
       || targetPackage.typings
-      || targetPackage.files?.some(e => e.endsWith('.d.ts'))
+      || targetPackage.files?.some(e => e.endsWith('.d.ts')),
     );
 
     if(!getConfig('types-only')) {
@@ -177,9 +181,9 @@ export async function tsAdd() {
     }
 
     const { versions: typeVersions, 'dist-tags': typeTags } = typesPackage;
-    const allTypesVersions = ObjKeys(typeVersions).filter(v => !typeVersions[v]!.deprecated);
+    const allTypesVersions = ObjKeys(typeVersions).filter(v => !typeVersions[v]?.deprecated);
 
-    if(targetVersion === tags.latest && typeVersions[typeTags.latest]!.deprecated) {
+    if(targetVersion === tags.latest && typeVersions[typeTags.latest]?.deprecated) {
       continue;
     }
 

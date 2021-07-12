@@ -4,6 +4,7 @@ const oldTitle = process.title;
 process.title = 'ts-add';
 
 if(process.argv.includes('--:make-autocompletion-flags')) {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const command = process.argv.pop()!.split(' ');
   command.splice(1, 0, '-i');
   process.argv.push(command.join(' '));

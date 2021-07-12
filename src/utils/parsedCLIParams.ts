@@ -3,10 +3,13 @@ import path from 'path';
 import btoa from 'btoa';
 import atob from 'atob';
 import yargsParser, { Arguments, Options } from 'yargs-parser';
+// WARN
+// eslint-disable-next-line import/no-cycle
 import { printMessage } from './printMessage';
 import { ObjEntries, ObjKeys, ValueOf } from './tsUtils';
 import { parseURL } from './parseURL';
 
+// eslint-disable-next-line import/no-mutable-exports
 export let withFlagCredentials = false;
 
 export const flagsWithDefaulValues = {
@@ -124,17 +127,17 @@ function parseCLIParams(): ParsedCLIParams {
   const argv = {
     ...flagsWithDefaulValues,
     ...Object.fromEntries(
-        ObjEntries(parsedParams)
-          .map(e => {
-            const [key, val] = e;
+      ObjEntries(parsedParams)
+        .map(e => {
+          const [key, val] = e;
 
-            if(val === false) {
-              parsedParams._.push('false');
-              return [key, true];
-            }
+          if(val === false) {
+            parsedParams._.push('false');
+            return [key, true];
+          }
 
-            return e;
-          })
+          return e;
+        }),
     ) as Pick<ReturnType<typeof yargsParser>, '_'>,
   };
   argv[':test-flags-run'] = false;
@@ -164,7 +167,7 @@ function parseCLIParams(): ParsedCLIParams {
           row
             .split('=')
             .map(e => e.trim())
-        ))
+        )),
     );
 
     if(!argv.registry && registry) {
@@ -220,7 +223,7 @@ export function getConfigValueByFlagOrSynonym(key: Flag | FlagSynonym): ValueOf<
     return parsedCLIParams[key];
   }
 
-  const alias = ObjEntries(flagAliases).find(([, e]) => e === key || e.includes(key))
+  const alias = ObjEntries(flagAliases).find(([, e]) => e === key || e.includes(key));
   if(!alias) {
     throw new Error('This should never happen.');
   }
@@ -239,22 +242,25 @@ export function isFlagOrSynonymInCommandLine(key: string) {
   const { aliases } = yargsParser.detailed(cliParams, parserOptions);
 
   const keys = [
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     ...aliases[clearFlag(key)]!.map(makeFlagWithPrefix),
     clearPostfixEqualitySigns(key),
   ];
 
   const arr = cliParams
     .split(/\s+/)
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     .map(e => e.split(/=/)[0]!)
     .flatMap(e => {
       const match = e.match(/^-([a-z]+)$/i);
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       return !match ? e : match[1]!.split('').map(e => `-${e}`);
     });
 
   return arr.some(e => keys.includes(e));
 }
 
-export const flagStack: Partial<Record<Flag, Boolean>> = {};
+export const flagStack: Partial<Record<Flag, boolean>> = {};
 export function getConfig<T extends Flag>(flag: T): FlagsWithDefaultValues[T] {
   flagStack[flag] = true;
   return parsedCLIParams[flag];
