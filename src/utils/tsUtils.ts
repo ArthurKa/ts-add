@@ -10,7 +10,7 @@ export function ObjKeys<T>(obj: T): (keyof T)[] {
   return Object.keys(obj) as any;
 }
 
-export function ObjValues<T>(obj: T): (T[keyof T])[] {
+export function ObjValues<T>(obj: T): T[keyof T][] {
   return Object.values(obj) as any;
 }
 

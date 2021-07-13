@@ -78,16 +78,13 @@ export async function tsAdd() {
     return;
   }
   if(getConfig('completion')) {
-    printMessage.completion();
-    return;
+    return void printMessage.completion();
   }
   if(getConfig('version')) {
-    printMessage.version();
-    return;
+    return void printMessage.version();
   }
   if(getConfig('help')) {
-    printMessage.help();
-    return;
+    return void printMessage.help();
   }
 
   const { _: packageNames } = parsedCLIParams;
