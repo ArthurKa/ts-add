@@ -182,7 +182,7 @@ function parseCLIParams(): ParsedCLIParams {
     if(!argv.password && password) {
       argv.password = password;
     }
-  } catch {}
+  } catch(e) {}
 
   if(!argv.registry) {
     argv.registry = 'https://registry.npmjs.org';
@@ -211,7 +211,7 @@ function parseCLIParams(): ParsedCLIParams {
         argv.password = password;
       }
     }
-  } catch {}
+  } catch(e) {}
 
   return argv;
 }

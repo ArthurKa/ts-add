@@ -116,7 +116,7 @@ export async function tsAdd() {
     let pkg;
     try {
       pkg = await fetchPackage(name);
-    } catch (e) {
+    } catch(e) {
       if(e.code === 'E401') {
         printMessage.unauthorized();
       } else {
@@ -172,7 +172,7 @@ export async function tsAdd() {
 
     try {
       typesPackage = await fetchPackage(typesPackageName);
-    } catch {
+    } catch(e) {
       printMessage.noTypesDeclaration(packageName);
       continue;
     }
