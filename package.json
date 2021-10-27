@@ -4,14 +4,6 @@
   "description": "Add packages with their corresponding types.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "keywords": [
-    "install",
-    "types",
-    "typings",
-    "add-package",
-    "install-package",
-    "package-with-types"
-  ],
   "scripts": {
     "build:clean": "rm -rf build/*",
     "ts": "tsc -w",
@@ -46,22 +38,30 @@
     "lock-verify": "^2.2.1",
     "typescript": "^4.2.4"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ArthurKa/ts-add.git"
-  },
+  "keywords": [
+    "install",
+    "types",
+    "typings",
+    "add-package",
+    "install-package",
+    "package-with-types"
+  ],
   "author": {
     "name": "ArthurKa",
     "email": "arthur.katruk@gmail.com"
   },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ArthurKa/ts-add/issues"
-  },
-  "homepage": "https://github.com/ArthurKa/ts-add#readme",
   "bin": {
     "ts-add": "./build/cli/index.js",
     "tsa": "./build/cli/index.js",
     "tsi": "./build/cli/i.js"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArthurKa/ts-add.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArthurKa/ts-add/issues"
+  },
+  "homepage": "https://github.com/ArthurKa/ts-add#readme"
 }
