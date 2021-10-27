@@ -12,7 +12,7 @@ import { parseURL } from './parseURL';
 // eslint-disable-next-line import/no-mutable-exports
 export let withFlagCredentials = false;
 
-export const flagsWithDefaulValues = {
+export const flagsWithDefaultValues = {
   'dry-run': false,
   'save-dev': false,
   'save-prod': false,
@@ -52,10 +52,10 @@ export const flagAliases: FlagAliases = {
   // 'check-package-json-only': 'co',
 };
 
-type FlagsWithDefaultValues = typeof flagsWithDefaulValues;
+type FlagsWithDefaultValues = typeof flagsWithDefaultValues;
 export type Flag = keyof FlagsWithDefaultValues;
 function isFlag(e: any): e is Flag {
-  return ObjKeys(flagsWithDefaulValues).includes(e);
+  return ObjKeys(flagsWithDefaultValues).includes(e);
 }
 
 export type FlagSynonym = Exclude<(
@@ -85,7 +85,7 @@ function transformOptions(opts: FlagAliases): TransformedOptions {
 
   for(const [flag, val] of ObjEntries(opts)) {
     const flagSynonyms = Array.isArray(val) ? val : [val];
-    const flagType = typeof flagsWithDefaulValues[flag];
+    const flagType = typeof flagsWithDefaultValues[flag];
 
     if(flagType === 'boolean' || flagType === 'string') {
       tOptions[flagType].push(flag);
@@ -125,7 +125,7 @@ function parseCLIParams(): ParsedCLIParams {
   const parsedParams = yargsParser(cliParams, parserOptions);
 
   const argv = {
-    ...flagsWithDefaulValues,
+    ...flagsWithDefaultValues,
     ...Object.fromEntries(
       ObjEntries(parsedParams)
         .map(e => {
@@ -218,7 +218,7 @@ function parseCLIParams(): ParsedCLIParams {
 
 export const parsedCLIParams = parseCLIParams();
 
-export function getConfigValueByFlagOrSynonym(key: Flag | FlagSynonym): ValueOf<typeof flagsWithDefaulValues> {
+export function getConfigValueByFlagOrSynonym(key: Flag | FlagSynonym): ValueOf<typeof flagsWithDefaultValues> {
   if(isFlag(key)) {
     return parsedCLIParams[key];
   }

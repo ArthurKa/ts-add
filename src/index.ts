@@ -11,7 +11,7 @@ import {
   isFlagOrSynonymInCommandLine,
   makeFlagWithPrefix,
   getConfig,
-  flagsWithDefaulValues,
+  flagsWithDefaultValues,
   withFlagCredentials,
   parseURL,
 } from './utils';
@@ -53,7 +53,7 @@ export async function tsAdd() {
     const flags = ObjEntries(flagAliases)
       .map(e => {
         const [flag, ...aliases] = e;
-        if(typeof flagsWithDefaulValues[flag] === 'string') {
+        if(typeof flagsWithDefaultValues[flag] === 'string') {
           return [`${flag}=`, aliases.flat().map(e => `${e}=`)];
         }
 

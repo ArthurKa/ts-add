@@ -5,7 +5,7 @@ import commandLineUsage, { OptionDefinition } from 'command-line-usage';
 import {
   getConfig,
   makeFlagWithPrefix,
-  flagsWithDefaulValues,
+  flagsWithDefaultValues,
   flagAliases,
   Flag,
   FlagSynonym,
@@ -144,7 +144,7 @@ export const printMessage: IPrintMessage = {
         const aliases = Array.isArray(synonyms) ? synonyms : [synonyms];
 
         const alias = aliases.shift();
-        const type = { name: typeof flagsWithDefaulValues[name] };
+        const type = { name: typeof flagsWithDefaultValues[name] };
         const description = (() => {
           const [firstWord, ...restWords] = desc.split(' ');
 
