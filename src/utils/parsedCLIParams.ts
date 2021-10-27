@@ -3,10 +3,10 @@ import path from 'path';
 import btoa from 'btoa';
 import atob from 'atob';
 import yargsParser, { Arguments, Options } from 'yargs-parser';
+import { ObjEntries, ObjKeys, ValueOf } from '@arthurka/ts-utils';
 // WARN
 // eslint-disable-next-line import/no-cycle
 import { printMessage } from './printMessage';
-import { ObjEntries, ObjKeys, ValueOf } from './tsUtils';
 import { parseURL } from './parseURL';
 
 // eslint-disable-next-line import/no-mutable-exports

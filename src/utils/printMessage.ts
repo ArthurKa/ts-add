@@ -1,5 +1,6 @@
 import chalk from 'chalk';
 import commandLineUsage, { OptionDefinition } from 'command-line-usage';
+import { ObjEntries } from '@arthurka/ts-utils';
 // WARN
 // eslint-disable-next-line import/no-cycle
 import {
@@ -10,8 +11,6 @@ import {
   Flag,
   FlagSynonym,
 } from './parsedCLIParams';
-
-import { ObjEntries } from './tsUtils';
 
 const pathToPackageJson = '../../package.json';
 

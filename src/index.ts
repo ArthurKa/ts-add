@@ -1,13 +1,12 @@
 import parsePackageName from 'npm-package-arg';
 import semver from 'semver';
 import { execSync } from 'child_process';
+import { ObjEntries, ObjKeys } from '@arthurka/ts-utils';
 import {
   parsedCLIParams,
   fetchPackage,
   printMessage,
-  ObjKeys,
   flagAliases,
-  ObjEntries,
   isFlagOrSynonymInCommandLine,
   makeFlagWithPrefix,
   getConfig,

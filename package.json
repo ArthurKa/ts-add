@@ -23,6 +23,7 @@
     "my-publish": "npm run publish:prepare && npm run pu"
   },
   "dependencies": {
+    "@arthurka/ts-utils": "^1.6.0",
     "atob": "^2.1.2",
     "btoa": "^1.2.1",
     "chalk": "^4.1.1",
