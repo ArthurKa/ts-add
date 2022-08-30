@@ -1,22 +1,22 @@
-[![All dependencies](https://img.shields.io/librariesio/release/npm/ts-add/1.1.1?style=flat-square "All dependencies of ts-add@1.1.1")](https://libraries.io/npm/ts-add/1.1.1)
-[![Reported vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/ts-add@1.1.1?style=flat-square "Reported vulnerabilities of ts-add@1.1.1")](https://snyk.io/test/npm/ts-add/1.1.1)
+[![All dependencies](https://img.shields.io/librariesio/release/npm/ts-add/1.2.0?style=flat-square "All dependencies of ts-add@1.2.0")](https://libraries.io/npm/ts-add/1.2.0)
+[![Reported vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/ts-add@1.2.0?style=flat-square "Reported vulnerabilities of ts-add@1.2.0")](https://snyk.io/test/npm/ts-add/1.2.0)
 [![Commits](https://flat.badgen.net/github/commits/ArthurKa/ts-add)](https://github.com/ArthurKa/ts-add/commits/master)
-[![NPM-version](https://img.shields.io/badge/npm-v1.1.1-blue.svg?style=flat-square&&logo=npm "Current NPM-version")](https://www.npmjs.com/package/ts-add/v/1.1.1)
+[![NPM-version](https://img.shields.io/badge/npm-v1.2.0-blue.svg?style=flat-square&&logo=npm "Current NPM-version")](https://www.npmjs.com/package/ts-add/v/1.2.0)
 [![Total downloads](https://img.shields.io/npm/dt/ts-add?style=flat-square "Total downloads for all the time")](https://npm-stat.com/charts.html?package=ts-add)
 [![Developed by](https://img.shields.io/badge/developed_by-ArthurKa-blueviolet.svg?style=flat-square "GitHub")](https://github.com/ArthurKa)\
-[![Publish size](https://flat.badgen.net/packagephobia/publish/ts-add@1.1.1?label=publish 'Publish size of ts-add@1.1.1')](https://packagephobia.now.sh/result?p=ts-add@1.1.1)
-[![Install size](https://flat.badgen.net/packagephobia/install/ts-add@1.1.1?label=install 'Install size of ts-add@1.1.1')](https://packagephobia.now.sh/result?p=ts-add@1.1.1)
-[![Minified size](https://img.shields.io/bundlephobia/min/ts-add@1.1.1?style=flat-square&label=minified "Minified size of ts-add@1.1.1")](https://bundlephobia.com/result?p=ts-add@1.1.1)
-[![Minified + gzipped size](https://img.shields.io/bundlephobia/minzip/ts-add@1.1.1?style=flat-square&label=minzipped "Minified + gzipped size of ts-add@1.1.1")](https://bundlephobia.com/result?p=ts-add@1.1.1)
+[![Publish size](https://flat.badgen.net/packagephobia/publish/ts-add@1.2.0?label=publish 'Publish size of ts-add@1.2.0')](https://packagephobia.now.sh/result?p=ts-add@1.2.0)
+[![Install size](https://flat.badgen.net/packagephobia/install/ts-add@1.2.0?label=install 'Install size of ts-add@1.2.0')](https://packagephobia.now.sh/result?p=ts-add@1.2.0)
+[![Minified size](https://img.shields.io/bundlephobia/min/ts-add@1.2.0?style=flat-square&label=minified "Minified size of ts-add@1.2.0")](https://bundlephobia.com/result?p=ts-add@1.2.0)
+[![Minified + gzipped size](https://img.shields.io/bundlephobia/minzip/ts-add@1.2.0?style=flat-square&label=minzipped "Minified + gzipped size of ts-add@1.2.0")](https://bundlephobia.com/result?p=ts-add@1.2.0)
 
-# ts-add@1.1.1
+# ts-add@1.2.0
 
 Helps you conveniently add packages with their corresponding types to your project.
 
 ## Installation
 `ts-add` is available via NPM and recomended to install globally:
 ```bash
-$ npm i -g ts-add@1.1.1
+$ npm i -g ts-add@1.2.0
 ```
 You can also use `ts-add` via NPX without explicit installation:
 ```bash
