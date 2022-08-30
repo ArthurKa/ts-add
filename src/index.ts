@@ -86,7 +86,7 @@ export async function tsAdd() {
     return void printMessage.help();
   }
 
-  const { _: packageNames } = parsedCLIParams;
+  const { _: packageNames, unknownFlags } = parsedCLIParams;
 
   if(!packageNames.length) {
     printMessage.noParams();
@@ -206,7 +206,7 @@ export async function tsAdd() {
 
   let isPrinted = false;
   if(dependencies.length) {
-    const command = makeCommand(dependencies, '-P');
+    const command = makeCommand(dependencies, ['-P', ...unknownFlags].join(' '));
     if(!getConfig('silent') && !getConfig(':test-flags-run')) {
       printMessage.command(command);
       isPrinted = true;
@@ -216,7 +216,7 @@ export async function tsAdd() {
     }
   }
   if(devDependencies.length) {
-    const command = makeCommand(devDependencies, '-D');
+    const command = makeCommand(devDependencies, ['-D', ...unknownFlags].join(' '));
     if(!getConfig('silent') && !getConfig(':test-flags-run')) {
       printMessage.command(command);
       isPrinted = true;

@@ -73,6 +73,7 @@ interface TransformedOptions {
 
 interface ParsedCLIParams extends FlagsWithDefaultValues {
   _: Arguments['_'];
+  unknownFlags: string[];
 }
 
 function transformOptions(opts: FlagAliases): TransformedOptions {
@@ -124,7 +125,8 @@ function parseCLIParams(): ParsedCLIParams {
   const cliParams = process.argv.slice(2).join(' ');
   const parsedParams = yargsParser(cliParams, parserOptions);
 
-  const argv = {
+  const argv: ParsedCLIParams = {
+    unknownFlags: [],
     ...flagsWithDefaultValues,
     ...Object.fromEntries(
       ObjEntries(parsedParams)
@@ -143,10 +145,10 @@ function parseCLIParams(): ParsedCLIParams {
   argv[':test-flags-run'] = false;
 
   if(!argv[':make-autocompletion-flags']) {
-    const unknownFlags = argv._.filter(e => e.startsWith('-'));
-    if(unknownFlags.length) {
-      printMessage.error(`Unknown flag "${unknownFlags[0]}".`);
-      process.exit(1);
+    argv.unknownFlags = argv._.filter(e => e.startsWith('-'));
+    argv._ = argv._.filter(e => !e.startsWith('-'));
+    if(argv.unknownFlags.length) {
+      printMessage.warning(`Unknown flag(s) ${argv.unknownFlags.join(', ')}. Passing on.`);
     }
   }
 
